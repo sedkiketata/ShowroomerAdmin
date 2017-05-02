@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myAdmin">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,13 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+ 
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,10 +37,11 @@
     <script src="lib/angular-route.js"></script>
     <script src="app.js"></script>
     <script src="controllers/ProductController.js"></script>
+    <script src="controllers/DashboardController.js"></script>
   <!-- End of AngularJS API -->
 
 </head>
-<body class="hold-transition skin-green sidebar-mini layout-boxed "  ng-app="myAdmin">
+<body class="hold-transition skin-blue sidebar-mini layout-boxed " >
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -194,7 +202,7 @@
     <!-- =============================================== -->
 
     <!-- Left side column. contains the sidebar -->
-    <aside class="main-sidebar" ng-controller="activeTabCtrl">
+    <aside class="main-sidebar">
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -449,7 +457,7 @@
 
 </div>
 <!-- ./wrapper -->
-
+    
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -462,5 +470,6 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- page script -->
 </body>
 </html>
