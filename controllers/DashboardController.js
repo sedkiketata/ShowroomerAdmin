@@ -42,7 +42,7 @@ app.controller("dashoardController", function ($scope) {
             data: [
                 {
                     label: "Download Sales",
-                    value: 12
+                    value: 12,
                 },
                 {
                     label: "In-Store Sales",
@@ -52,7 +52,14 @@ app.controller("dashoardController", function ($scope) {
                     label: "Mail-Order Sales",
                     value: 20
                 }
-  ]
+  ],
+            backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#017500',
+                '#01B500',
+                '#003600'
+            ]
         });
     };
     $scope.addDonutCategory = function () {
@@ -71,7 +78,15 @@ app.controller("dashoardController", function ($scope) {
                     label: "Mail-Order Sales",
                     value: 20
                 }
-  ]
+  ],
+             backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#FFBE00',
+                '#FFD10F',
+                '#FFDE20'
+            ]
+            
         });
     };
     $scope.addDonutProduct = function () {
@@ -90,9 +105,17 @@ app.controller("dashoardController", function ($scope) {
                     label: "Mail-Order Sales",
                     value: 20
                 }
-  ]
+  ],
+             backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#017575',
+                '#00B3B0',
+                '#91F9FA'
+            ]
         });
     };
+    
     $scope.addMorisChart();
     $scope.addDonutRegion();
     $scope.addDonutCategory();
