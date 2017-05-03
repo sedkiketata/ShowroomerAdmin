@@ -1,9 +1,6 @@
 var app = angular.module("myAdmin", ["ngRoute"]);
 app.config(["$routeProvider",function($routeProvider) {
     $routeProvider
-    .when("/", {
-        templateUrl : "index.html",
-    })
     .when("/blank", {
         templateUrl : "views/blank.html",
     })
@@ -18,6 +15,8 @@ app.config(["$routeProvider",function($routeProvider) {
     })
     .when("/thisproduct",{
         templateUrl : "views/myproduct.html"
+    })
+    .otherwise({
+        redirectTo : "/home"
     });
-
 }]);
