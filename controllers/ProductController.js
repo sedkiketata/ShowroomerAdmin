@@ -1,4 +1,18 @@
 app.controller("productController", function ($scope, $http) {
+    $scope.doEdit = false;
+    $scope.submit = function () {
+        if ($scope.form.file.$valid && $scope.file) {
+            $scope.upload($scope.file);
+        }
+    };
+    $scope.uploadFile = function (files) {
+        var fd = new FormData();
+        //Take the first selected file
+        fd.append("file", files[0]);
+        x = files[0].name;
+        console.log(files[0].name);
+
+    };
     $scope.addProduct = function () {
         $scope.product.owner="Apple";
         $http({
@@ -51,19 +65,49 @@ app.controller("productController", function ($scope, $http) {
                 }
             })
             .then(function (response) {
-            $http({
-                url: "https://showroomercore.mybluemix.net/api/product/getall",
-                method: "GET"
-            }).then(function (response) {
-                $scope.productList = response.data;
+                $http({
+                    url: "https://showroomercore.mybluemix.net/api/product/getall",
+                    method: "GET"
+                }).then(function (response) {
+                    $scope.productList = response.data;
+                });
+                $http({
+                    url: "http://mylabsing.mybluemix.net/api/stats/ProductBestOffer",
+                    method: "GET"
+                }).then(function (response) {
+                    $scope.productBestOfferList = response.data;
+                });
+
             });
-            $http({
-                url: "http://mylabsing.mybluemix.net/api/stats/ProductBestOffer",
-                method: "GET"
-            }).then(function (response) {
-                $scope.productBestOfferList = response.data;
-            });
-           
-        });
+    }
+
+    $scope.editProduct = function (input) {
+        $http.get("https://showroomercore.mybluemix.net/api/product/", {
+            headers: {
+                "id": input
+            }
+        }).then(function (response) {
+            $scope.product = response.data;
+            $scope.doEdit = true;
+        })
+    }
+    $scope.doEditProduct = function (input) {
+        $http.put("https://showroomercore.mybluemix.net/api/product/", $scope.product, {
+                headers: {
+                    "id": input
+                }
+            })
+            .then(function (response) {
+
+                $http({
+                    url: "https://showroomercore.mybluemix.net/api/product/getall",
+                    method: "GET"
+                }).then(function (response) {
+                    $scope.productList = response.data;
+                });
+
+                $scope.product = "";
+            })
+        $scope.doEdit=false;
     }
 });

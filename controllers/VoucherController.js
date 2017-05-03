@@ -1,4 +1,5 @@
 app.controller("voucherController", function ($scope, $http) {
+    $scope.doEdit=false;
     $scope.addVoucher = function () {
         $scope.voucher.userId = $scope.selectedShowroomer.userId;
         $http({
@@ -30,7 +31,7 @@ app.controller("voucherController", function ($scope, $http) {
     }).then(function (response) {
         $scope.voucherList = response.data;
     });
-    
+
     $http({
         url: "https://showroomercore.mybluemix.net/api/showroomer/getall",
         method: "GET"
@@ -45,39 +46,43 @@ app.controller("voucherController", function ($scope, $http) {
                 }
             })
             .then(function (response) {
-             
-            $http({
-                url: "https://showroomercore.mybluemix.net/api/voucher/getall",
-                method: "GET"
-            }).then(function (response) {
-                $scope.voucherList = response.data;
-            });
 
-      
+                $http({
+                    url: "https://showroomercore.mybluemix.net/api/voucher/getall",
+                    method: "GET"
+                }).then(function (response) {
+                    $scope.voucherList = response.data;
+                });
+
+
             })
     }
-    
-     /*$scope.editVoucher = function (input) {
-        $http.put("https://showroomercore.mybluemix.net/api/voucher/", {
+    $scope.editVoucher = function (input) {
+        $http.get("https://showroomercore.mybluemix.net/api/voucher/", {headers: {
+            "id": input
+        }}).then(function (response) {
+            $scope.voucher=response.data;
+            $scope.doEdit=true;
+        })
+    }
+    $scope.doEditVoucher = function (input) {
+       
+        $http.put("https://showroomercore.mybluemix.net/api/voucher/", $scope.voucher,{
                 headers: {
                     "id": input
                 }
             })
             .then(function (response) {
-             
-            $http({
-                url: "https://showroomercore.mybluemix.net/api/voucher/getall",
-                method: "GET"
-            }).then(function (response) {
-                $scope.voucherList = response.data;
-            });
 
-            $scope.voucher.reference = "";
-            $scope.voucher.name = "";
-            $scope.voucher.description = "";
-            $scope.voucher.amount = "";
-            $scope.voucher.userId = "";
-            $scope.voucher.user = "";
+                $http({
+                    url: "https://showroomercore.mybluemix.net/api/voucher/getall",
+                    method: "GET"
+                }).then(function (response) {
+                    $scope.voucherList = response.data;
+                });
+
+                $scope.voucher="";
             })
-    }*/
+                $scope.doEdit=false;
+    }
 });

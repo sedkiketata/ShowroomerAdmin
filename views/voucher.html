@@ -1,153 +1,154 @@
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Vouchers
-        <small>Control all your vouchers</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Product</li>
-      </ol>
+        <h1>
+            Vouchers
+            <small>Control all your vouchers</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Product</li>
+        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content" ng-controller="voucherController">
-    
-      <div class="row">
-        <div class="col-sm-8">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Add a new voucher</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Voucher Name</label>
-                  <input type="text" class="form-control" placeholder="Enter your voucher name" ng-model="voucher.name">
-                </div>
-                <div class="form-group">
-                  <label>Reference</label>
-                  <input type="text" class="form-control" placeholder="Enter your reference here" ng-model="voucher.reference">
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Amount</label>
-                        <div class="input-group">
-                          <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
-                          <input type="number" class="form-control" placeholder="Voucher amount" ng-model="voucher.amount">
-                        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add a new voucher</h3>
                     </div>
-                </div>
-                <br>
-                  
-                   <!-- /.form-group -->
-              <div class="form-group">
-                <label>Showroomer List</label>
-                <select  ng-model="selectedShowroomer" ng-options="oneShowroomer.username for oneShowroomer in showroomerList"  class="form-control select2" style="width: 100%;"  >
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Voucher Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your voucher name" ng-model="voucher.name">
+                            </div>
+                            <div class="form-group">
+                                <label>Reference</label>
+                                <input type="text" class="form-control" placeholder="Enter your reference here" ng-model="voucher.reference">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
+                                        <input type="number" class="form-control" placeholder="Voucher amount" ng-model="voucher.amount">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Showroomer List</label>
+                                <select ng-model="selectedShowroomer" ng-options="oneShowroomer.username for oneShowroomer in showroomerList" class="form-control select2" style="width: 100%;">
                   
                   </select>
-              </div>
-              <!-- /.form-group -->
-                
-                  <!-- textarea -->
-                <div class="form-group">
-                  <label>Description</label>
-                  <textarea class="form-control" rows="3" placeholder="Enter product description ..." ng-model="voucher.description"></textarea>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <!-- textarea -->
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter product description ..." ng-model="voucher.description"></textarea>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-3">
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary" ng-click="addVoucher()" ng-hide="doEdit">Submit</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="doEditVoucher(voucher.voucherId)" ng-show="doEdit">Update voucher</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                <!-- /.box -->
             </div>
-              <!-- /.box-body -->
-            <div class="row">
-            <div class="col-sm-5"></div>
-             <div class="col-sm-3">
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary" ng-click="addVoucher()">Submit</button>
-              </div>
-             </div>
-            </div>
-            </form>
-          </div>
-          <!-- /.box -->
-        </div>
-        <div class="col-sm-4">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Recently Added Vouchers</h3>
-            </div>
-            <div class="box-body">
-                <ul class="products-list product-list-in-box">
-                    <!-- Here you have to add items -->
-                    <li class="item" ng-repeat="lastDateProduct in productList | limitTo:7 | orderBy : '-creationDate'  ">
-                      <div class="product-img">
-                        <img src="dist/img/avatar.png" alt="Product Image">
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">{{lastDateProduct.name}}
+            <div class="col-sm-4">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Recently Added Vouchers</h3>
+                    </div>
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <!-- Here you have to add items -->
+                            <li class="item" ng-repeat="lastDateProduct in productList | limitTo:7 | orderBy : '-creationDate'  ">
+                                <div class="product-img">
+                                    <img src="dist/img/avatar.png" alt="Product Image">
+                                </div>
+                                <div class="product-info">
+                                    <a href="javascript:void(0)" class="product-title">{{lastDateProduct.name}}
                           <span class="label label-warning pull-right">${{lastDateProduct.price}}</span></a>
-                          <span class="product-description">
+                                    <span class="product-description">
                             {{lastDateProduct.description}}
                           </span>
-                      </div>
-                    </li>
-                    <!-- End of your items -->
-                  </ul>
-              </div>
-          </div>
-        </div>
-      </div>
-        <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Voucher List</h3>
-
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" ng-model="searchByName">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
+                                </div>
+                            </li>
+                            <!-- End of your items -->
+                        </ul>
+                    </div>
                 </div>
-              </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>Index</th>
-                  <th>Name</th>
-                  <th>Reference</th>
-                  <th>Amount</th>
-                  <th>Showroomer Name</th>
-                  <th>Description</th>
-                </tr>
-                <tr ng-repeat="oneVoucher in voucherList | filter : searchByName">
-                  <td>{{ $index + 1 }}</td>
-                  <td>{{ oneVoucher.name }}</td>
-                  <td><span class="label label-primary">{{ oneVoucher.reference }}</span></td>
-                  <td><span class="label label-success">{{ oneVoucher.amount }}%</span></td>
-                  <td><span class="label label-default">{{ oneVoucher.user.username }}</span></td>
-                  <td><div></div>{{ oneVoucher.description | limitTo:68}}<span style="color:grey" ng-show="{{(oneProduct.description).length>75}}"> ...</span></td>
-                    <td>
-                   <button type="submit" class="btn btn-primary" ng-click="editVoucher(input)">Edit</button>
-                     <button type="submit" class="btn btn-primary" ng-click="deleteVoucher(oneVoucher.voucherId)">delete</button>    
-                    
-                    </td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Voucher List</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" ng-model="searchByName">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Index</th>
+                                <th>Name</th>
+                                <th>Reference</th>
+                                <th>Amount</th>
+                                <th>Showroomer Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr ng-repeat="oneVoucher in voucherList | filter : searchByName">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ oneVoucher.name }}</td>
+                                <td><span class="label label-primary">{{ oneVoucher.reference }}</span></td>
+                                <td><span class="label label-success">{{ oneVoucher.amount }}%</span></td>
+                                <td><span class="label label-default">{{ oneVoucher.user.username }}</span></td>
+                                <td>
+                                    <div></div>{{ oneVoucher.description | limitTo:68}}<span style="color:grey" ng-show="{{(oneProduct.description).length>75}}"> ...</span></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" ng-click="editVoucher(oneVoucher.voucherId)">Edit</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="deleteVoucher(oneVoucher.voucherId)">delete</button>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
