@@ -18,6 +18,8 @@ app.config(["$routeProvider",function($routeProvider) {
     })
     .when("/thisproduct",{
         templateUrl : "views/myproduct.html"
+    })
+    .otherwise({
+        redirectTo : "/home"
     });
-
 }]);
