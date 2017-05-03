@@ -74,9 +74,13 @@
                                 <input type="text" class="form-control" placeholder="Enter your brand here" ng-model="product.brand">
                             </div>
                             <div class="form-group">
+                                <label>Categories</label>
+                                <select ng-model="product.category" ng-options="oneCategory for oneCategory in categoriesList" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                            <!--<div class="form-group">
                                 <label>Category</label>
                                 <input type="text" class="form-control" placeholder="Enter your product category here" ng-model="product.category">
-                            </div>
+                            </div>-->
 
                             <div class="row">
                                 <div class="col-sm-4">

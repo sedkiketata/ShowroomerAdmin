@@ -110,4 +110,11 @@ app.controller("productController", function ($scope, $http) {
             })
         $scope.doEdit=false;
     }
+    $http({
+        url:"https://showroomercore.mybluemix.net/api/product/GetAllCategories",
+        method : "get"
+    }).then(function(response){
+        $scope.categoriesList = response.data;
+        console.log($scope.categoriesList);
+    });
 });
