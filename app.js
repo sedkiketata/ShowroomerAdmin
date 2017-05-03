@@ -12,10 +12,13 @@ app.config(["$routeProvider",function($routeProvider) {
     })
     .when("/product",{
         templateUrl : "views/product.html"
-    });
+    })
+    .when("/voucher",{
+        templateUrl : "views/voucher.html"
+    })
     .when("/thisproduct",{
         templateUrl : "views/myproduct.html"
-    })
+    });
 }]);
 app.controller("activeTabCtrl",function($scope){
   $scope.dashboard="active";
