@@ -1,4 +1,12 @@
-app.controller("dashoardController", function ($scope) {
+app.controller("dashoardController", function ($scope, $http) {
+    $http({
+        url : "https://showroomercore.mybluemix.net/api/stats/GetCompanyRevenuePerRegion",
+        method : "GET",
+        headers : {"company":"Apple"}
+    }).then(function(response){
+        $scope.CompanyRevenuePerRegion = response.data;
+        $scope.addDonutRegion();
+    });
     $scope.addMorisChart = function () {
         new Morris.Line({
             // ID of the element in which to draw the chart.
@@ -37,23 +45,20 @@ app.controller("dashoardController", function ($scope) {
         });
     };
     $scope.addDonutRegion = function () {
-        Morris.Donut({
+        var donut = Morris.Donut({
             element: 'donut-region',
             data: [
                 {
-                    label: "Download Sales",
-                    value: 12
+                    label: $scope.CompanyRevenuePerRegion[0].label,
+                    value: $scope.CompanyRevenuePerRegion[0].value
                 },
                 {
-                    label: "In-Store Sales",
-                    value: 30
-                },
-                {
-                    label: "Mail-Order Sales",
-                    value: 20
+                    label: $scope.CompanyRevenuePerRegion[1].label,
+                    value: $scope.CompanyRevenuePerRegion[1].value
                 }
   ]
         });
+//        donut.setData($scope.CompanyRevenuePerRegion);
     };
     $scope.addDonutCategory = function () {
         Morris.Donut({
@@ -94,7 +99,6 @@ app.controller("dashoardController", function ($scope) {
         });
     };
     $scope.addMorisChart();
-    $scope.addDonutRegion();
     $scope.addDonutCategory();
     $scope.addDonutProduct();
 });
