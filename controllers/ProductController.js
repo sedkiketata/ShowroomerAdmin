@@ -1,5 +1,6 @@
 app.controller("productController", function ($scope, $http) {
     $scope.addProduct = function () {
+        $scope.product.owner="Apple";
         $http({
             url: "https://showroomercore.mybluemix.net/api/product",
             data: $scope.product,

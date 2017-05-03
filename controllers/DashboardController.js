@@ -1,9 +1,11 @@
 app.controller("dashoardController", function ($scope, $http) {
     $http({
-        url : "https://showroomercore.mybluemix.net/api/stats/GetCompanyRevenuePerRegion",
-        method : "GET",
-        headers : {"company":"Apple"}
-    }).then(function(response){
+        url: "https://showroomercore.mybluemix.net/api/stats/GetCompanyRevenuePerRegion",
+        method: "GET",
+        headers: {
+            "company": "Apple"
+        }
+    }).then(function (response) {
         $scope.CompanyRevenuePerRegion = response.data;
         $scope.addDonutRegion();
     });
@@ -45,27 +47,26 @@ app.controller("dashoardController", function ($scope, $http) {
         });
     };
     $scope.addDonutRegion = function () {
+        var fullData = [];
+        for (var i = 0; i < $scope.CompanyRevenuePerRegion.length; i++) {
+            var newdata = {
+                label: $scope.CompanyRevenuePerRegion[i].label,
+                value: $scope.CompanyRevenuePerRegion[i].value
+            };
+            fullData.push(newdata);
+        }
         var donut = Morris.Donut({
             element: 'donut-region',
-            data: [
-                {
-                    label: $scope.CompanyRevenuePerRegion[0].label,
-                    value: $scope.CompanyRevenuePerRegion[0].value
-                },
-                {
-                    label: $scope.CompanyRevenuePerRegion[1].label,
-                    value: $scope.CompanyRevenuePerRegion[1].value
-                }
-  ],
-            backgroundColor : '#252525',
-            labelColor :'#252525',
-            colors:[
+            data: fullData,
+            backgroundColor: '#252525',
+            labelColor: '#252525',
+            colors: [
                 '#017500',
                 '#01B500',
                 '#003600'
             ]
         });
-//        donut.setData($scope.CompanyRevenuePerRegion);
+        //        donut.setData($scope.CompanyRevenuePerRegion);
     };
     $scope.addDonutCategory = function () {
         Morris.Donut({
@@ -84,14 +85,14 @@ app.controller("dashoardController", function ($scope, $http) {
                     value: 20
                 }
   ],
-             backgroundColor : '#252525',
-            labelColor :'#252525',
-            colors:[
+            backgroundColor: '#252525',
+            labelColor: '#252525',
+            colors: [
                 '#FFBE00',
                 '#FFD10F',
                 '#FFDE20'
             ]
-            
+
         });
     };
     $scope.addDonutProduct = function () {
@@ -111,16 +112,16 @@ app.controller("dashoardController", function ($scope, $http) {
                     value: 20
                 }
   ],
-             backgroundColor : '#252525',
-            labelColor :'#252525',
-            colors:[
+            backgroundColor: '#252525',
+            labelColor: '#252525',
+            colors: [
                 '#017575',
                 '#00B3B0',
                 '#91F9FA'
             ]
         });
     };
-    
+
     $scope.addMorisChart();
     $scope.addDonutCategory();
     $scope.addDonutProduct();
