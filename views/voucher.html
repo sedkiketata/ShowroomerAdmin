@@ -8,7 +8,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Product</li>
+            <li class="active">Voucher</li>
         </ol>
     </section>
 
@@ -16,7 +16,7 @@
     <section class="content" ng-controller="voucherController">
 
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -57,7 +57,7 @@
                             <!-- textarea -->
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter product description ..." ng-model="voucher.description"></textarea>
+                                <textarea class="form-control" rows="3" placeholder="Enter voucher description ..." ng-model="voucher.description"></textarea>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -75,31 +75,7 @@
                 </div>
                 <!-- /.box -->
             </div>
-            <div class="col-sm-4">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Recently Added Vouchers</h3>
-                    </div>
-                    <div class="box-body">
-                        <ul class="products-list product-list-in-box">
-                            <!-- Here you have to add items -->
-                            <li class="item" ng-repeat="lastDateProduct in productList | limitTo:7 | orderBy : '-creationDate'  ">
-                                <div class="product-img">
-                                    <img src="dist/img/avatar.png" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">{{lastDateProduct.name}}
-                          <span class="label label-warning pull-right">${{lastDateProduct.price}}</span></a>
-                                    <span class="product-description">
-                            {{lastDateProduct.description}}
-                          </span>
-                                </div>
-                            </li>
-                            <!-- End of your items -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <div class="row">
             <div class="col-xs-12">
