@@ -4,8 +4,9 @@
     <section class="content-header">
         <h1>
             Dashboard
-            <small>All your control are here</small>
+            <small>All your statistics are here</small>
         </h1>
+        <hr/>
         <ol class="breadcrumb">
             <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Dashboard</li>
@@ -14,10 +15,9 @@
 
     <!-- Main content -->
     <section class="content" ng-controller="dashoardController">
-
         <div class="row">
             <div class="col-sm-3">
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-green">
                     <div class="inner">
                         <h3>150</h3>
 
@@ -49,7 +49,7 @@
             </div>
             <div class="col-sm-3">
                 <!-- small box -->
-                <div class="small-box bg-yellow">
+                <div class="small-box bg-red">
                     <div class="inner">
                         <h3>44</h3>
 
@@ -80,6 +80,7 @@
                 </div>
             </div>
         </div>
+        <br>
         <div class="row">
             <div class="col-sm-12">
                 <div class="box box-info">
@@ -101,9 +102,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-green">
+        <br>
+        <div class="row" >
+            <div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-yellow">
                     <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
 
                     <div class="info-box-content">
@@ -122,7 +124,7 @@
                 <!-- /.info-box -->
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-red">
+                <div class="info-box bg-aqua">
                     <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
 
                     <div class="info-box-content">
@@ -142,19 +144,11 @@
             </div>
             <!-- /.col -->
         </div>
-
+        <br>
         <div class="row">
             <div class="col-sm-12">
-                <div class="box box-info">
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Line Chart</h3>
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="box-body">
+                <div class="box box-Navy">
+                    <div class="box-body">
                             <div class="chart">
                                 <div class="col-md-4">
                                     <div id="donut-region"></div>
@@ -168,10 +162,12 @@
                             </div>
                             <!-- /.box-body -->
                         </div>
-                    </div>
                 </div>
             </div>
-    </section>
+
     <!-- /.content -->
     </div>
+    </section>
+</div>
+
     <!-- /.content-wrapper -->

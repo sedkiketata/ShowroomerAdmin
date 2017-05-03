@@ -13,9 +13,11 @@ app.config(["$routeProvider",function($routeProvider) {
     .when("/product",{
         templateUrl : "views/product.html"
     })
+    .when("/voucher",{
+        templateUrl : "views/voucher.html"
+    })
     .when("/thisproduct",{
         templateUrl : "views/myproduct.html"
     });
-    
 
 }]);

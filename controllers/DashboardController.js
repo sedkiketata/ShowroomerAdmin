@@ -56,7 +56,14 @@ app.controller("dashoardController", function ($scope, $http) {
                     label: $scope.CompanyRevenuePerRegion[1].label,
                     value: $scope.CompanyRevenuePerRegion[1].value
                 }
-  ]
+  ],
+            backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#017500',
+                '#01B500',
+                '#003600'
+            ]
         });
 //        donut.setData($scope.CompanyRevenuePerRegion);
     };
@@ -76,7 +83,15 @@ app.controller("dashoardController", function ($scope, $http) {
                     label: "Mail-Order Sales",
                     value: 20
                 }
-  ]
+  ],
+             backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#FFBE00',
+                '#FFD10F',
+                '#FFDE20'
+            ]
+            
         });
     };
     $scope.addDonutProduct = function () {
@@ -95,9 +110,17 @@ app.controller("dashoardController", function ($scope, $http) {
                     label: "Mail-Order Sales",
                     value: 20
                 }
-  ]
+  ],
+             backgroundColor : '#252525',
+            labelColor :'#252525',
+            colors:[
+                '#017575',
+                '#00B3B0',
+                '#91F9FA'
+            ]
         });
     };
+    
     $scope.addMorisChart();
     $scope.addDonutCategory();
     $scope.addDonutProduct();
